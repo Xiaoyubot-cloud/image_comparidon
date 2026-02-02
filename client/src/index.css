@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 苹果风格全局样式 */
+@layer base {
+  /* 字体渲染优化 */
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-apple text-apple-gray-700 bg-apple-gray-50;
+  }
+
+  /* 选中文字颜色 */
+  ::selection {
+    background-color: rgba(0, 113, 227, 0.15);
+  }
+}
+
+@layer components {
+  /* 苹果风格主按钮 */
+  .btn-apple-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3
+           text-base font-medium text-white
+           bg-apple-blue hover:bg-apple-blue-hover
+           rounded-apple-lg
+           transition-all duration-300 ease-apple
+           shadow-apple-sm hover:shadow-apple
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-apple-blue disabled:active:scale-100;
+  }
+
+  /* 苹果风格次要按钮 */
+  .btn-apple-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3
+           text-base font-medium text-apple-blue
+           bg-transparent hover:bg-apple-blue/5
+           border border-apple-gray-300 hover:border-apple-blue
+           rounded-apple-lg
+           transition-all duration-300 ease-apple
+           active:scale-[0.98];
+  }
+
+  /* 苹果风格卡片 */
+  .card-apple {
+    @apply bg-white rounded-apple-xl
+           shadow-apple-card hover:shadow-apple-card-hover
+           transition-shadow duration-300 ease-apple
+           overflow-hidden;
+  }
+
+  /* 上传区域样式 */
+  .upload-zone {
+    @apply relative
+           border-2 border-dashed border-apple-gray-200
+           hover:border-apple-blue/50
+           rounded-apple-xl
+           bg-apple-gray-50/50 hover:bg-apple-blue/[0.02]
+           transition-all duration-300 ease-apple
+           cursor-pointer;
+  }
+
+  .upload-zone.has-file {
+    @apply border-solid border-apple-gray-200 bg-white shadow-apple-card;
+  }
+
+  .upload-zone.dragging {
+    @apply border-apple-blue bg-apple-blue/5;
+  }
+}
+
+/* 自定义动画 */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.animate-progress-shimmer {
+  animation: progress-shimmer 1.5s ease-in-out infinite;
+}
